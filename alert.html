@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alert and Prompt Demo</title>
+    <script>
+        function showAlert(){
+            alert("This ia an alert box! Welcome to the demo.");
+        }
+
+        function showPrompt(){
+            let name=prompt("Please enter your name:","Narinder");
+            if(name!=null && name!=""){
+                alert("Hello"+ name +"! Nice to meet you");
+              }else{
+                alert("You didn't enter the name");
+              }
+        }
+</script>
+    </head>
+    <body>
+        <h1>Alert and Prompt Box Example</h1>
+        <button onclick="showAlert()">Click for Alert</button>
+        <button onclick="showPrompt()">Click for Prompt</button>
+    </body>
+</html>

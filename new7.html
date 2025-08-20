@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input, textarea {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 300px;
+        }
+        .error {
+            color: red;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 90%;
+        }
+        th, td {
+            border: 1px solid #888;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>User Registration Form</h2>
+
+    <form id="registrationForm" onsubmit="return validateForm();">
+        <label>Name:</label><br>
+        <input type="text" id="name"><br>
+
+        <label>Age:</label><br>
+        <input type="number" id="age"><br>
+
+        <label>Email:</label><br>
+        <input type="text" id="email"><br>
+
+        <label>Phone Number:</label><br>
+        <input type="text" id="phone"><br>
+
+        <label>Address:</label><br>
+        <textarea id="address" rows="3"></textarea><br>
+
+        <button type="submit">Register</button>
+        <p class="error" id="errorMessage"></p>
+    </form>
+
+    <h3>Registered Users</h3>
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>Name</th><th>Age</th><th>Email</th><th>Phone</th><th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- New rows will be added here -->
+        </tbody>
+    </table>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const age = parseInt(document.getElementById('age').value.trim());
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            const phonePattern = /^\d{10}$/;
+
+            if (name === "") {
+                errorMessage.textContent = "Name cannot be empty.";
+                return false;
+            }
+            if (isNaN(age) || age <= 10) {
+                errorMessage.textContent = "Age must be a number greater than 10.";
+                return false;
+            }
+            if (!emailPattern.test(email)) {
+                errorMessage.textContent = "Please enter a valid email address.";
+                return false;
+            }
+            if (!phonePattern.test(phone)) {
+                errorMessage.textContent = "Phone number must be exactly 10 digits.";
+                return false;
+            }
+            if (address === "") {
+                errorMessage.textContent = "Address cannot be empty.";
+                return false;
+            }
+
+            errorMessage.textContent = "";
+            addToTable(name, age, email, phone, address);
+            document.getElementById("registrationForm").reset(); // clear the form
+            return false; // prevent form submission
+        }
+
+        function addToTable(name, age, email, phone, address) {
+            const table = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            newRow.insertCell(0).textContent = name;
+            newRow.insertCell(1).textContent = age;
+            newRow.insertCell(2).textContent = email;
+            newRow.insertCell(3).textContent = phone;
+            newRow.insertCell(4).textContent = address;
+        }
+    </script>
+
+</body>
+</html>

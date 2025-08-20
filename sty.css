@@ -1,0 +1,33 @@
+/*Body style*/
+
+body{
+    background-color: aliceblue;
+    color:#003366;
+    font-family: Arial - sans-serif;
+}
+
+/*Ordered List style*/
+ol{
+    background-color: aliceblue;
+    padding: 10px;
+    border: 1px solid #003366;
+    width: 150px;
+    
+}
+
+/*Table style*/
+table{
+    border-collapse: collapse;
+    width: 60px;
+    background-color: aliceblue;
+}
+
+th,td{
+    border: 2px solid #003366;
+    padding: 10px;
+    text-align: centre;
+}
+
+th{
+    background-color: #c7d5e4;
+}

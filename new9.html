@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loop Example - While and Do...While</title>
+</head>
+<body>
+    <h1>Loop Demonstration</h1>
+
+    <p id="whileLoopResult">While loop output will appear here.</p>
+    <p id="doWhileLoopResult">Do...while loop output will appear here.</p>
+
+    <script>
+        // While Loop Example
+        let i = 1;
+        let whileResult = "While Loop: ";
+        while (i <= 5) {
+            whileResult += i + " ";
+            i++;
+        }
+        document.getElementById("whileLoopResult").innerText = whileResult;
+
+        // Do...While Loop Example
+        let j = 1;
+        let doWhileResult = "Do...While Loop: ";
+        do {
+            doWhileResult += j + " ";
+            j++;
+        } while (j <= 5);
+        document.getElementById("doWhileLoopResult").innerText = doWhileResult;
+    </script>
+</body>
+</html>

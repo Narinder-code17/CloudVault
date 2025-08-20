@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Form</title>
+  <script>
+    function show() {
+      let g = document.querySelector('[name="gender"]:checked');
+      let s = [...document.querySelectorAll('[name="skill"]:checked')].map(x => x.value).join(", ");
+      alert("Gender: " + (g?.value || "None") + "\nSkills: " + (s || "None"));
+    }
+  </script>
+</head>
+<body>
+
+<form>
+  <fieldset>
+    <legend>Gender</legend>
+    <input type="radio" name="gender" value="Male">Male
+    <input type="radio" name="gender" value="Female">Female
+  </fieldset>
+
+  <fieldset>
+    <legend>Skills</legend>
+    <input type="checkbox" name="skill" value="Java">Java
+    <input type="checkbox" name="skill" value="Python">Python
+  </fieldset>
+
+  <button type="button" onclick="show()">Show</button>
+</form>
+
+</body>
+</html>

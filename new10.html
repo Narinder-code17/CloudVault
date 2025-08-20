@@ -1,0 +1,45 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<title>Radio Buttons, Checkboxes, and For Loop</title>  
+</head>  
+<body>  
+<h2>Select Gender:</h2>  
+<input type="radio" name="gender" value="Male"> Male<br>  
+<input type="radio" name="gender" value="Female"> Female<br>  
+<input type="radio" name="gender" value="Other"> Other<br>  
+<h2>Select Your Hobbies:</h2>  
+<input type="checkbox" name="hobby" value="Reading"> Reading<br>  
+<input type="checkbox" name="hobby" value="Traveling"> Traveling<br>  
+<input type="checkbox" name="hobby" value="Gaming"> Gaming<br>  
+<input type="checkbox" name="hobby" value="Cooking"> Cooking<br>  
+<br>  
+<button onclick="showSelections()">Submit</button>  
+<h3>Selected Values:</h3>  
+<p id="result"></p>  
+<script>  
+function showSelections() {  
+let gender = "";  
+let hobbies = [];  
+// Get selected radio button (gender)  
+let genderRadios = document.getElementsByName("gender");  
+for (let i = 0; i < genderRadios.length; i++) {  
+if (genderRadios[i].checked) {  
+gender = genderRadios[i].value;  
+break; // only one can be selected  
+}  
+}  
+// Get selected checkboxes (hobbies)  
+let hobbyCheckboxes = document.getElementsByName("hobby");  
+for (let i = 0; i < hobbyCheckboxes.length; i++) {  
+if (hobbyCheckboxes[i].checked) {  
+hobbies.push(hobbyCheckboxes[i].value);  
+}  
+}  
+// Display result  
+document.getElementById("result").innerHTML =  
+"Gender: " + gender + "<br>Hobbies: " + hobbies.join(", ");  
+}  
+</script>  
+</body>  
+</html>

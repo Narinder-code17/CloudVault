@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Form</title>
+    <script>
+        window.onload = function () {
+            alert("Welcome!");
+            let name = prompt("Enter your name:");
+            if (name) document.getElementById("greet").innerText = "Hi, " + name + "!";
+        };
+
+        function validate() {
+            let n = f.name.value, e = f.email.value, p = f.phone.value;
+
+            if (!n || !e || !p) return alert("All fields required."), false;
+            if (!/^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(e)) return alert("Invalid email."), false;
+            if (!/^\d{10}$/.test(p)) return alert("Phone must be 10 digits."), false;
+
+            alert("Form submitted!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+    <h2 id="greet"></h2>
+
+    <form name="f" onsubmit="return validate()">
+        Name: <input name="name"><br><br>
+        Email: <input name="email"><br><br>
+        Phone: <input name="phone"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>

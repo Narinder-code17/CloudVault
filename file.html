@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BHARDWAJ Web Page</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        /* Header Styling with Gradient and Text Shadow */
+        header {
+            background: linear-gradient(to right, #4CAF50, #2196F3); /* Gradient background */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Adding text shadow */
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        /* Hover effect on header */
+        header:hover {
+            background: linear-gradient(to right, #2196F3, #4CAF50); /* Reverse gradient on hover */
+        }
+
+        /* Navigation Bar Styling */
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        /* Hover effect on navigation links */
+        nav a:hover {
+            color: #4CAF50; /* Change color on hover */
+            font-weight: bold;
+        }
+
+        /* Main Content Section */
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        /* Hover effect on sections */
+        section:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+        }
+
+        /* Footer Styling with Gradient and Hover Effect */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to right, #FF5722, #FFC107); /* Gradient background */
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease-in-out;
+        }
+
+        footer:hover {
+            background: linear-gradient(to right, #FF9800, #FF5722); /* Hover effect */
+        }
+
+        /* Button Styling */
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        /* Hover effect on button */
+        button:hover {
+            background-color: #45a049; /* Darker green when hovered */
+        }
+
+        /* Highlighted text class */
+        .highlight {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to BHARDWAJ Web Page</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- Main Content Section -->
+    <section>
+        <h2>Introduction</h2>
+        <p>This is an example of BHARDWAJ web page with inline CSS and JavaScript. You can explore various features below.</p>
+
+        <!-- Inline CSS: Styling applied directly to the h1 tag -->
+        <h3 style="color: rgb(234, 0, 255); text-align: center; font-family: 'Arial', sans-serif; border-bottom: 2px solid black;">
+            Hello, World!
+        </h3>
+
+        <!-- Inline CSS: Styling applied directly to the paragraph tag -->
+        <p style="font-size: 18px; color: rgb(119, 0, 128); font-family: 'Verdana', sans-serif; line-height: 1.5; margin: 20px 0;">
+            This is an example of inline CSS. Inline CSS allows you to apply styles directly to elements in HTML.
+        </p>
+
+        <!-- Button to trigger JavaScript -->
+        <button id="changeStyleButton">
+            Change Text Color
+        </button>
+    </section>
+
+    <!-- Interactive Section -->
+    <section>
+        <h2>Interactive Section</h2>
+        <p id="textElement">Click the button below to change my color!</p>
+        <button onclick="changeTextColor()">Click Me to Change Color</button>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 My Website | All Rights Reserved</p>
+    </footer>
+
+    <!-- JavaScript Section -->
+    <script>
+        // JavaScript to change the color of the h3 text when the button is clicked
+        document.getElementById('changeStyleButton').onclick = function() {
+            document.querySelector('h3').style.color = 'red';
+            console.log("Button clicked! The h3 text color has been changed.");
+        };
+
+        // JavaScript function to change color of text in interactive section
+        function changeTextColor() {
+            let textElement = document.getElementById('textElement');
+            textElement.style.color = textElement.style.color === 'purple' ? 'blue' : 'purple';
+        }
+    </script>
+
+</body>
+</html>

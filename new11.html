@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dropdown and List Box Example</title>
+</head>
+<body>
+<h1>Pull-Down Menu and List Box with Events</h1>
+
+<!-- Pull-Down Menu -->
+<label for="fruitSelect">Choose a fruit:</label>
+<select id="fruitSelect">
+<option value="Apple">Apple</option>
+<option value="Banana">Banana</option>
+<option value="Mango">Mango</option>
+<option value="Orange">Orange</option>
+</select>
+
+<!-- List Box -->
+
+<br><br>
+<label for="colorList">Select your favorite colors:</label><br>
+<select id="colorList" multiple size="4">
+<option value="Red">Red</option>
+<option value="Pink">Pink</option>
+<option value="Blue">Blue</option>
+<option value="Green">Green</option>
+<option value="Yellow">Yellow</option>
+<option value="Purple">Purple</option>
+</select>
+
+<!-- Output -->
+<p id="output"></p>
+
+<script>
+// Event handler for pull-down menu
+document.getElementById("fruitSelect").onchange = function() {
+let selectedFruit = this.value;
+document.getElementById("output").innerHTML = "Selected Fruit: " + selectedFruit;
+};
+
+// Event listener for list box
+document.getElementById("colorList").addEventListener("change", function() {
+let selectedColors = [];
+for (let option of this.options) {
+if (option.selected) {
+selectedColors.push(option.value);
+}
+}
+
+document.getElementById("output").innerHTML += "<br>Selected Colors: " +
+selectedColors.join(", ");
+});
+</script>
+</body>
+</html>

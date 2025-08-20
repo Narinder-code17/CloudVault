@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Selector</title>
+</head>
+<body>
+
+<h3>Pick a Color & Fruit</h3>
+
+<select id="color">
+  <option>--Color--</option>
+  <option>Red</option>
+  <option>Green</option>
+  <option>Blue</option>
+</select>
+
+<select id="fruit" size="3">
+  <option>Apple</option>
+  <option>Banana</option>
+  <option>Mango</option>
+  <option>Pear</option>
+</select>
+
+<p id="result">Selected: None</p>
+
+<script>
+  const color = document.getElementById("color");
+  const fruit = document.getElementById("fruit");
+  const result = document.getElementById("result");
+
+  function show() {
+    result.innerText = "Selected: " + color.value + ", " + fruit.value;
+  }
+
+  color.onchange = show;
+  fruit.onchange = show;
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flappy Bird Web</title>
+  <style>
+    /* --- Embedded CSS --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #70c5ce;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+    #gameContainer {
+      position: relative;
+      width: 288px;
+      height: 512px;
+      margin: 40px auto;
+    }
+    canvas {
+      display: block;
+      background: transparent;
+    }
+    #score {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 24px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="gameContainer">
+    <div id="score">0</div>
+    <canvas id="gameCanvas" width="288" height="512"></canvas>
+  </div>
+
+  <script>
+    // --- Embedded JavaScript ---
+    const cvs = document.getElementById('gameCanvas');
+    const ctx = cvs.getContext('2d');
+    const scoreDisplay = document.getElementById('score');
+
+    // Load images
+    const bird = new Image();  bird.src = 'assets/bird.png';
+    const bg   = new Image();  bg.src = 'assets/background.jpg';
+    const fg   = new Image();  fg.src = 'assets/base.png';
+    const pipeNorth = new Image(); pipeNorth.src = 'assets/pipeNorth.png';
+    const pipeSouth = new Image(); pipeSouth.src = 'assets/pipeSouth.png';
+
+    // Load sounds
+    const flySound   = new Audio('assets/fly.mp3');
+    const scoreSound = new Audio('assets/score.mp3');
+
+    // Game variables
+    let gap = 100;
+    let constant;
+    let bX = 50;       // bird X
+    let bY = 150;      // bird Y
+    let gravity = 1.5;
+    let score = 0;
+
+    // On key press, flap
+    document.addEventListener('keydown', function() {
+      bY -= 25;
+      flySound.play();
+    });
+
+    // Pipe coordinates array
+    let pipes = [];
+    pipes[0] = { x: cvs.width, y: 0 };
+
+    function draw() {
+      // Draw background
+      ctx.drawImage(bg, 0, 0);
+
+      // Draw pipes
+      for (let i = 0; i < pipes.length; i++) {
+        constant = pipeNorth.height + gap;
+        ctx.drawImage(pipeNorth, pipes[i].x, pipes[i].y);
+        ctx.drawImage(pipeSouth, pipes[i].x, pipes[i].y + constant);
+
+        pipes[i].x--;
+
+        // Add new pipe
+        if (pipes[i].x === 125) {
+          pipes.push({
+            x: cvs.width,
+            y: Math.floor(Math.random() * pipeNorth.height) - pipeNorth.height
+          });
+        }
+
+        // Collision detection
+        if (
+          bX + bird.width >= pipes[i].x &&
+          bX <= pipes[i].x + pipeNorth.width &&
+          (bY <= pipes[i].y + pipeNorth.height ||
+           bY + bird.height >= pipes[i].y + constant) ||
+          bY + bird.height >= cvs.height - fg.height
+        ) {
+          return location.reload();  // restart game on crash
+        }
+
+        // Score update
+        if (pipes[i].x === 5) {
+          score++;
+          scoreSound.play();
+          scoreDisplay.textContent = score;
+        }
+      }
+
+      // Draw base and bird
+      ctx.drawImage(fg, 0, cvs.height - fg.height);
+      ctx.drawImage(bird, bX, bY);
+
+      // Apply gravity
+      bY += gravity;
+
+      // Loop
+      requestAnimationFrame(draw);
+    }
+
+    // Start the game loop once foreground is loaded
+    fg.onload = draw;
+  </script>
+</body>
+</html>
+

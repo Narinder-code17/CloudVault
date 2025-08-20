@@ -1,0 +1,69 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<style> 
+body { 
+font-family: Arial, sans-serif; 
+background: #f0f0f0; 
+padding: 20px; 
+} 
+.card-container { 
+position: relative; 
+width: 600px; 
+height: 300px; 
+margin: auto; 
+border: 2px solid #333; 
+} 
+.card { 
+position: absolute; 
+width: 200px; 
+height: 250px; 
+padding: 10px; 
+color: white; 
+      border-radius: 8px; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+      transition: transform 0.3s, z-index 0.3s; 
+    } 
+    .card:hover { 
+      transform: scale(1.05); 
+      z-index: 10; /* Bring to front on hover */ 
+    } 
+    .card1 { 
+      background: crimson; 
+      top: 20px; 
+      left: 20px; 
+      z-index: 1; 
+    } 
+    .card2 { 
+      background: seagreen; 
+      top: 40px; 
+      left: 100px; 
+      z-index: 2; 
+    } 
+    .card3 { 
+      background: steelblue; 
+      top: 60px; 
+      left: 180px; 
+      z-index: 3; 
+    } 
+  </style> 
+</head> 
+<body> 
+  <h2>z-index Demo – Layered Cards</h2> 
+  <p>Hover over any card to bring it to the front.</p> 
+<div class="card-container"> 
+<div class="card card1"> 
+<h3>Card 1</h3> 
+<p>z-index: 1</p> 
+</div> 
+<div class="card card2"> 
+<h3>Card 2</h3> 
+<p>z-index: 2</p> 
+</div> 
+<div class="card card3"> 
+<h3>Card 3</h3> 
+<p>z-index: 3</p> 
+</div> 
+</div> 
+</body> 
+</html>
